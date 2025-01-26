@@ -1,0 +1,51 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias R 8
+#nps = 1e10
+/control/alias N_R 1000000000 
+#/control/alias N_R 1000000 
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 16
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+/gps/pos/type Surface
+/gps/pos/shape Sphere
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius {R} cm
+#/gps/pos/confine physSourceCap
+
+##########################################################################################
+# Use the cosine angular distribution
+#
+/gps/ang/type cos
+/gps/ang/mintheta 0. deg
+/gps/ang/maxtheta 90. deg
+
+#########################
+# Set particle type and loguniform energy distribution from a histogram
+#uniform log spaced 0.01 to 10 MeV in 100 bins, the total number of events are equal in each log bin
+
+/gps/particle e-
+/gps/ene/type Pow
+/gps/ene/min 0.07 MeV
+/gps/ene/max 5.0 MeV
+/gps/ene/alpha -1.5
+
+
+#########################
+# Run particles
+#
+/analysis/setFileName electron_Power_1P5_R_{R}_cm_Nr_{N_R}_ISO
+/run/beamOn {N_R}
+

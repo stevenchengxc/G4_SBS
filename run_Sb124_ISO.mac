@@ -1,0 +1,175 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias R 8
+#nps = 1e10
+#/control/alias N_R 1000000000 
+/control/alias N_R 10000000 
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 12
+
+##########################
+# Set name for the output file
+#
+#/analysis/setFileName electron_Uni_Log_R_{R}_cm_Nr_{N_R}_ISO
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+/gps/pos/type Surface
+/gps/pos/shape Sphere
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius {R} cm
+/gps/pos/confine physSourceCap
+
+##########################################################################################
+# Use the cosine angular distribution
+#
+/gps/ang/type cos
+/gps/ang/mintheta 0. deg
+/gps/ang/maxtheta 90. deg
+
+#########################
+#########################
+# Setup the source spectrum for Sb124 from ICRP 107
+#
+/gps/particle e-
+/gps/ene/type Arb
+/gps/hist/type arb
+/gps/hist/point 0.0 3.147
+/gps/hist/point 0.0001 3.145
+/gps/hist/point 0.00011 3.145
+/gps/hist/point 0.00012 3.145
+/gps/hist/point 0.00013 3.145
+/gps/hist/point 0.00014 3.145
+/gps/hist/point 0.00015 3.145
+/gps/hist/point 0.00016 3.145
+/gps/hist/point 0.00018 3.144
+/gps/hist/point 0.0002 3.144
+/gps/hist/point 0.00022 3.144
+/gps/hist/point 0.00024 3.143
+/gps/hist/point 0.00026 3.143
+/gps/hist/point 0.00028 3.143
+/gps/hist/point 0.0003 3.143
+/gps/hist/point 0.00032 3.142
+/gps/hist/point 0.00036 3.142
+/gps/hist/point 0.0004 3.141
+/gps/hist/point 0.00045 3.14
+/gps/hist/point 0.0005 3.14
+/gps/hist/point 0.00055 3.139
+/gps/hist/point 0.0006 3.138
+/gps/hist/point 0.00065 3.138
+/gps/hist/point 0.0007 3.137
+/gps/hist/point 0.00075 3.136
+/gps/hist/point 0.0008 3.135
+/gps/hist/point 0.00085 3.135
+/gps/hist/point 0.0009 3.134
+/gps/hist/point 0.001 3.132
+/gps/hist/point 0.0011 3.131
+/gps/hist/point 0.0012 3.13
+/gps/hist/point 0.0013 3.128
+/gps/hist/point 0.0014 3.127
+/gps/hist/point 0.0015 3.125
+/gps/hist/point 0.0016 3.124
+/gps/hist/point 0.0018 3.121
+/gps/hist/point 0.002 3.118
+/gps/hist/point 0.0022 3.115
+/gps/hist/point 0.0024 3.112
+/gps/hist/point 0.0026 3.11
+/gps/hist/point 0.0028 3.107
+/gps/hist/point 0.003 3.104
+/gps/hist/point 0.0032 3.101
+/gps/hist/point 0.0036 3.095
+/gps/hist/point 0.004 3.09
+/gps/hist/point 0.0045 3.083
+/gps/hist/point 0.005 3.076
+/gps/hist/point 0.0055 3.069
+/gps/hist/point 0.006 3.062
+/gps/hist/point 0.0065 3.055
+/gps/hist/point 0.007 3.048
+/gps/hist/point 0.0075 3.041
+/gps/hist/point 0.008 3.034
+/gps/hist/point 0.0085 3.027
+/gps/hist/point 0.009 3.024
+/gps/hist/point 0.01 3.014
+/gps/hist/point 0.011 3.005
+/gps/hist/point 0.012 2.996
+/gps/hist/point 0.013 2.986
+/gps/hist/point 0.014 2.977
+/gps/hist/point 0.015 2.968
+/gps/hist/point 0.016 2.959
+/gps/hist/point 0.018 2.941
+/gps/hist/point 0.02 2.924
+/gps/hist/point 0.022 2.906
+/gps/hist/point 0.024 2.888
+/gps/hist/point 0.026 2.87
+/gps/hist/point 0.028 2.852
+/gps/hist/point 0.03 2.834
+/gps/hist/point 0.032 2.816
+/gps/hist/point 0.036 2.78
+/gps/hist/point 0.04 2.744
+/gps/hist/point 0.045 2.699
+/gps/hist/point 0.05 2.653
+/gps/hist/point 0.055 2.608
+/gps/hist/point 0.06 2.564
+/gps/hist/point 0.065 2.519
+/gps/hist/point 0.07 2.475
+/gps/hist/point 0.075 2.431
+/gps/hist/point 0.08 2.387
+/gps/hist/point 0.085 2.344
+/gps/hist/point 0.09 2.301
+/gps/hist/point 0.1 2.218
+/gps/hist/point 0.11 2.137
+/gps/hist/point 0.12 2.06
+/gps/hist/point 0.13 1.987
+/gps/hist/point 0.14 1.918
+/gps/hist/point 0.15 1.851
+/gps/hist/point 0.16 1.789
+/gps/hist/point 0.18 1.678
+/gps/hist/point 0.2 1.591
+/gps/hist/point 0.22 1.529
+/gps/hist/point 0.24 1.467
+/gps/hist/point 0.26 1.399
+/gps/hist/point 0.28 1.327
+/gps/hist/point 0.3 1.252
+/gps/hist/point 0.32 1.173
+/gps/hist/point 0.36 1.01
+/gps/hist/point 0.4 0.845
+/gps/hist/point 0.45 0.646
+/gps/hist/point 0.5 0.473
+/gps/hist/point 0.55 0.341
+/gps/hist/point 0.6 0.272
+/gps/hist/point 0.65 0.258
+/gps/hist/point 0.7 0.246
+/gps/hist/point 0.75 0.235
+/gps/hist/point 0.8 0.226
+/gps/hist/point 0.85 0.218
+/gps/hist/point 0.9 0.212
+/gps/hist/point 1.0 0.199
+/gps/hist/point 1.1 0.183
+/gps/hist/point 1.2 0.164
+/gps/hist/point 1.3 0.143
+/gps/hist/point 1.4 0.121
+/gps/hist/point 1.5 0.101
+/gps/hist/point 1.6 0.082
+/gps/hist/point 1.8 0.049
+/gps/hist/point 2.0 0.021
+/gps/hist/point 2.2 0.003
+/gps/hist/point 2.30177 0.0
+/gps/hist/inter Lin
+
+#########################
+# Run particles
+#
+/analysis/setFileName Sb124_srccap_theta0to30_R_{R}_cm_Nr_{N_R}_ISO
+#/analysis/setFileName Sb124_R_{R}_cm_Nr_{N_R}_ISO
+/run/beamOn {N_R}
+

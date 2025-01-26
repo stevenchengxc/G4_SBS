@@ -1,0 +1,44 @@
+##########################
+# run.mac is for testing
+#########################
+# Multi-threading mode
+#
+/run/numberOfThreads 12
+
+##########################
+# Set name for the output file
+#
+/analysis/setFileName gamma_662keV_Yg5cm_r0P1_cm_beamtodet1_1000000
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+#/tracking/verbose 1
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/radius 0.1 mm
+/gps/pos/centre 50. 0. -9.5 mm
+/gps/pos/rot1 0 1 1
+/gps/direction -1 0 0
+
+#/gps/pos/radius 10 mm
+#/gps/pos/centre 0. 0. 10. mm
+#/gps/direction 0 0 -1
+
+#########################
+#
+#/gps/particle e-
+#/gps/ene/type Arb
+#/gps/hist/type arb
+#/gps/hist/point 0.1 999.0
+#/gps/hist/point 1 999.0
+#/gps/hist/point 3 999.0
+#/gps/hist/inter Lin
+/gps/particle gamma
+/gps/energy 0.662 MeV
+
+/run/beamOn 1000000

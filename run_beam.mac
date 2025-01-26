@@ -1,0 +1,44 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias X_source 100  
+#/control/alias N_R 100000000
+/control/alias N_R 10000000
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 12
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/radius 10 mm
+
+##########################################################################################
+#mono-directional 
+
+/gps/direction 0 0 -1
+
+#########################
+# source definetion 
+#
+#/gps/particle e-
+/gps/particle gamma
+/gps/ene/mono 662 keV
+
+#########################
+# Run particles
+#
+/gps/pos/centre 0. -4.4. {X_source}. mm
+#/analysis/setFileName beam_MonoE_electron_2000keV_{N_R}
+/analysis/setFileName beam_MonoE_gamma_662keV_{N_R}
+/run/beamOn {N_R}

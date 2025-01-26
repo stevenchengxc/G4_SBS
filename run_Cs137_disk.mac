@@ -1,0 +1,88 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias Y_gamma_5 50
+/control/alias N_R 100000000
+#/control/alias N_R 100000
+#/control/alias N_R 3
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 12
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+#/tracking/verbose 2
+#The default value of the time threshold for radioactive decays of ions - above which these decays are ignored - has been changed, from 10^27 ns (i.e. about twice the age of the universe) to 1 year. For applications where radioactive decays of ions do play an important role, it is recommended to increase the default time threshold of these decays to a very high value, e.g. 1.0e+60 years. This can be done in either one of the following three ways:
+#Via UI command, e.g. /process/had/rdm/thresholdForVeryLongDecayTime 1.0e+60 year, (command to be used after /run/initialization);
+#Via C++ interface, e.g. G4HadronicParameters::Instance()->SetTimeThresholdForRadioactiveDecay( 1.0e+60*CLHEP::year ) (to be placed in the main program before run initialization);
+#Via the second parameter of the constructor of the class G4RadioactiveDecay (for analogue mode only) or G4Radioactivation (for both analogue or biased mode), e.g. G4RadioactiveDecay( "RadioactiveDecay", 1.0e+60*CLHEP::year ) or G4Radioactivation( "Radioactivation", 1.0e+60*CLHEP::year ) (this is for custom physics lists, before run initialization).
+
+/process/had/rdm/thresholdForVeryLongDecayTime 1.0e+60 year
+
+#define Cs-137 isotope
+#/gps/particle ion
+#/gps/ion 55 137 0 0
+#/gps/energy 0. keV
+
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/radius 2.2 cm
+
+#set the source paralle to the EST, the source face is pointing perpendicularly to the silicon detectors
+#/gps/pos/rot1 0 1 1
+
+##########################################################################################
+# Use the cosine angular distribution
+#
+/gps/ang/type cos
+/gps/ang/mintheta 0. deg
+/gps/ang/maxtheta 90. deg
+
+#########################
+# Set particle type and uniform energy distribution from a histogram
+#
+
+/gps/particle e-
+#/gps/ene/type Mono
+#/gps/ene/mono 661.67 keV
+/gps/ene/type Arb
+/gps/hist/type arb
+/gps/hist/point .0294 1.93
+/gps/hist/point .088 1.76
+/gps/hist/point .147 1.61
+/gps/hist/point .205 1.43
+/gps/hist/point .264 1.22
+/gps/hist/point .323 0.938
+/gps/hist/point .381 0.601
+/gps/hist/point .44 0.264
+/gps/hist/point .499 0.057
+/gps/hist/point .557 0.033
+/gps/hist/point .616 0.0307
+/gps/hist/point .675 0.0282
+/gps/hist/point .733 0.0253
+/gps/hist/point .792 0.022
+/gps/hist/point .851 0.0183
+/gps/hist/point .909 0.0142
+/gps/hist/point .968 0.00992
+/gps/hist/point 1.03 0.00591
+/gps/hist/point 1.09 0.00245
+/gps/hist/point 1.14 5.38E-04
+/gps/hist/inter Lin
+
+#########################
+# Run particles
+#
+#/gps/pos/centre 50. -4.4. -8 mm
+#/gps/pos/centre {Y_gamma_5}. 0. -8. mm
+/gps/pos/centre 0. -4.4. 49.65 mm
+#/analysis/setFileName Cs137_Yg_5_cm_Nr_{N_R}
+/analysis/setFileName Cs137_betadecay_X_0_cm_Nr_{N_R}
+/run/beamOn {N_R}

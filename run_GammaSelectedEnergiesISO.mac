@@ -1,0 +1,56 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias R 8
+/control/alias N_R 100000000
+#/control/alias N_R 1000000 
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 12
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+/gps/pos/type Surface
+/gps/pos/shape Sphere
+/gps/pos/centre 0. 0. 0. cm
+/gps/pos/radius {R} cm
+/gps/ang/type cos
+/gps/ang/mintheta 0. deg
+/gps/ang/maxtheta 90. deg
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+# Use the cosine angular distribution
+#multiple common gamma sources
+#########################
+
+/gps/particle gamma
+/gps/ene/type Mono
+/gps/ene/mono 0.723 MeV  #Sb124
+
+/gps/source/add 1.
+/gps/particle gamma
+/gps/ene/type Mono
+/gps/ene/mono 0.765 MeV #Nb95
+
+/gps/source/add 1.
+/gps/particle gamma
+/gps/ene/type Mono
+/gps/ene/mono 1.173 MeV #Co60
+
+/gps/source/add 1.
+/gps/particle gamma
+/gps/ene/type Mono
+/gps/ene/mono 1.690 MeV #Co60
+
+#########################
+# Run particles
+#
+/analysis/setFileName gamma_selectedNuclides_R_{R}_cm_Nr_{N_R}_ISO
+/run/beamOn {N_R}
+

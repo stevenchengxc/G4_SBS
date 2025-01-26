@@ -1,0 +1,51 @@
+##########################
+# Set the aliases for the rest of the macro file
+#
+/control/alias X_beta_0 39.7  #tape on the entrance
+#/control/alias N_R 100000000
+/control/alias N_R 10000000
+/control/listAlias
+
+##########################
+# Multi-threading mode
+#
+/run/numberOfThreads 10
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+##########################################################################################
+# Model the particle source along the surface of a sphere surrounding the detector
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/radius 10.2 mm
+
+##########################################################################################
+# Use the cosine angular distribution
+#
+/gps/ang/type cos
+/gps/ang/mintheta 0. deg
+/gps/ang/maxtheta 90. deg
+
+#########################
+# Setup the source spectrum for Cs137 mono-E electrons
+#
+/gps/particle e-
+#/gps/ene/mono 624.22 keV
+/gps/ene/mono 656 keV
+#/gps/ene/type User
+#/gps/hist/type energy
+#/gps/hist/point 0.62422 0.537
+#/gps/hist/point 0.64 0.0
+#/gps/hist/point 0.655 0.0
+#/gps/hist/point 0.656 0.1
+
+#########################
+# Run particles
+#
+/gps/pos/centre 0. -4.4. {X_beta_0}. mm
+/analysis/setFileName Cs137_MonoE_656keV_{N_R}
+/run/beamOn {N_R}
