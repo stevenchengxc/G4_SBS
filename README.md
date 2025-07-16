@@ -1,8 +1,7 @@
 # G4_SBS
+This repository houses the Geant4 simulation (V11.2) project for the Silicon Beta Spectrometer (SBS), an innovative instrument developed in Byun's Nuclear Instrumentation Lab at McMaster University. Our goal with G4_SBS is to provide a robust G4 framework for the design, characterization, and optimization of the SBS, specifically tailored for beta and gamma spectrometry.
 
-## 🔬 Geant4 Simulation for the Silicon Beta Spectrometer
-
-This repository houses the Geant4 simulation project for the Silicon Beta Spectrometer (SBS), an innovative instrument developed in Byun's Nuclear Instrumentation Lab at McMaster University. Our goal with G4_SBS is to provide a robust G4 framework for the design, characterization, and optimization of the SBS, specifically tailored for beta and gamma spectrometry.
+## 🔬 Silicon Beta Spectrometer
 
 The Silicon Beta Spectrometer (SBS)
 The SBS is engineered for precise beta detection, effectively discriminating against gamma events. Its core design features include:
