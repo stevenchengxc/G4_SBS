@@ -1,4 +1,6 @@
-🔬 G4_SBS: Geant4 Simulation for the Silicon Beta Spectrometer
+# G4_SBS
+
+## 🔬 Geant4 Simulation for the Silicon Beta Spectrometer
 
 This repository houses the Geant4 simulation project for the Silicon Beta Spectrometer (SBS), an innovative instrument developed in Byun's Nuclear Instrumentation Lab at McMaster University. Our goal with G4_SBS is to provide a robust G4 framework for the design, characterization, and optimization of the SBS, specifically tailored for beta and gamma spectrometry.
 
@@ -12,7 +14,7 @@ Entrance Window: A Mylar entrance window protects the detector stack.
 Silicon Detector Stack: The heart of the SBS comprises a series of Micron Semiconductor Ltd (UK) MSD040 silicon detectors: One 500 μm front detector. Three 1500 μm detectors following the front detector.
 
 
-📚 References
+## 📚 References
 
 This work is thoroughly documented and published. Please refer to and cite the following:
 
